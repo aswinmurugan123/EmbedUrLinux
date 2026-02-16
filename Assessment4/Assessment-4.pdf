@@ -1,0 +1,259 @@
+Assessment-4
+
+
+Question:
+
+For the attached file, write a bash script which should take the file as input and have to go through it line by line and need to generate an output file (say output.txt) with listings of following parameters fetched from the input file.
+
+Params expected to be fetched from input.txt file : "frame.time", "wlan.fc.type", "wlan.fc.subtype"
+Sample output expected in output.txt:
+
+"frame.time": "Nov 14, 2024 11:44:48.219200000 India Standard Time",
+"wlan.fc.type": "1",
+"wlan.fc.subtype": "9"
+"frame.time": "Nov 14, 2024 11:44:48.219208000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "1",
+and so on.
+
+
+
+Answer:
+
+
+Extract_params.sh
+#!/bin/bash
+
+# Check argument count
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <input_file>"
+    exit 1
+fi
+
+INPUT_FILE="$1"
+OUTPUT_FILE="output.txt"
+
+# Clear output file before writing
+> "$OUTPUT_FILE"
+
+# Read file line by line
+while IFS= read -r line
+do
+    if echo "$line" | grep -q '"frame.time":'; then
+        echo "$line" | sed 's/^[[:space:]]*//' >> "$OUTPUT_FILE"
+    elif echo "$line" | grep -q '"wlan.fc.type":'; then
+        echo "$line" | sed 's/^[[:space:]]*//' >> "$OUTPUT_FILE"
+    elif echo "$line" | grep -q '"wlan.fc.subtype":'; then
+        echo "$line" | sed 's/^[[:space:]]*//' >> "$OUTPUT_FILE"
+    fi
+done < "$INPUT_FILE"
+
+echo "Extraction complete. Output written to $OUTPUT_FILE"
+
+
+
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment4$ ./extract_params.sh input.txt
+^C
+
+
+Output.txt
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment4$ cat output.txt
+"frame.time": "Dec 31, 2024 12:50:25.890970000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:25.892357000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:25.928606000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:25.983072000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:25.983586000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:25.993337000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:25.994324000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.030963000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.085310000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.085817000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.095334000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.096326000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.133380000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.187886000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.188401000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.198261000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.199336000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.211884000 India Standard Time",
+"wlan.fc.type": "2",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.212199000 India Standard Time",
+"wlan.fc.type": "1",
+"wlan.fc.subtype": "9",
+"frame.time": "Dec 31, 2024 12:50:26.235805000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.281473000 India Standard Time",
+"wlan.fc.type": "1",
+"wlan.fc.subtype": "12",
+"frame.time": "Dec 31, 2024 12:50:26.281609000 India Standard Time",
+"wlan.fc.type": "1",
+"wlan.fc.subtype": "13",
+"frame.time": "Dec 31, 2024 12:50:26.281922000 India Standard Time",
+"wlan.fc.type": "1",
+"wlan.fc.subtype": "11",
+"frame.time": "Dec 31, 2024 12:50:26.281927000 India Standard Time",
+"wlan.fc.type": "2",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.289336000 India Standard Time",
+"wlan.fc.type": "2",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.289639000 India Standard Time",
+"wlan.fc.type": "1",
+"wlan.fc.subtype": "9",
+"frame.time": "Dec 31, 2024 12:50:26.289645000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.290674000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.300338000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.302328000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.338169000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.392748000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.393187000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.403339000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.404323000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.435166000 India Standard Time",
+"wlan.fc.type": "2",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.435346000 India Standard Time",
+"wlan.fc.type": "1",
+"wlan.fc.subtype": "9",
+"frame.time": "Dec 31, 2024 12:50:26.440536000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.494913000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.495473000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.505338000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.506323000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.542968000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.597609000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.598570000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.607357000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.609151000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.645384000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.699719000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.700200000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.710190000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.711266000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.747773000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.802329000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.802786000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.812335000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.813326000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.850192000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.904536000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.905006000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.915188000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.916326000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:26.952587000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:27.007097000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:27.007580000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+"frame.time": "Dec 31, 2024 12:50:27.017335000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
+
