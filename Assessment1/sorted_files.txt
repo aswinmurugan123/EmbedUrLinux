@@ -1,0 +1,6 @@
+total 32
+-rw-rw-r-- 1 aswinmurugan aswinmurugan    0 Feb 10 14:31 f1
+-rw-rw-r-- 1 aswinmurugan aswinmurugan    0 Feb 10 14:31 f2
+-rw-rw-r-- 1 aswinmurugan aswinmurugan    0 Feb 10 14:31 f3
+lrwxrwxrwx 1 aswinmurugan aswinmurugan   14 Feb 10 12:25 file_link -> dir1/dir2/file
+drwxrwxr-x 2 aswinmurugan aswinmurugan 4096 Feb 10 11:40 dir2
