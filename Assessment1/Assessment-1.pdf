@@ -1,0 +1,435 @@
+1) Create a file and add executable permission to all users (user, group and others)
+aswinmurugan@Muruga:~/Desktop/dum/embedUrAssessment1$ touch file1
+aswinmurugan@Muruga:~/Desktop/dum/embedUrAssessment1$ chmod a+x file1
+
+2) Create a file and remove write permission for group user alone
+aswinmurugan@Muruga:~/Desktop/dum/embedUrAssessment1$ touch file2
+aswinmurugan@Muruga:~/Desktop/dum/embedUrAssessment1$chmod g-w file2
+aswinmurugan@Muruga:~/Desktop/dum/embedUrAssessment1$ ls -l file2
+-rw-r--r-- 1 aswinmurugan aswinmurugan 0 Feb 10 11:22 file2
+
+3) Create a file and add a softlink to the file in different directory (Eg : Create a file in dir1/dir2/file and create a softlink for file inside dir1)
+aswinmurugan@Muruga:~/Desktop/dum/embedUrAssessment1$ mkdir -p dir1/dir2
+aswinmurugan@Muruga:~/Desktop/dum/embedUrAssessment1$ touch dir1/dir2/file
+aswinmurugan@Muruga:~/Desktop/dum/embedUrAssessment1$ ln -s dir1/dir2/file dir1/file_link
+aswinmurugan@Muruga:~/Desktop/dum/embedUrAssessment1$ ls -l dir1
+total 8
+drwxrwxr-x 2 aswinmurugan aswinmurugan 4096 Feb 10 11:40 dir2
+lrwxrwxrwx 1 aswinmurugan aswinmurugan   14 Feb 10 11:40 file_link -> dir1/dir2/file
+
+4) Use ps command with options to display all active process running on the system
+aswinmurugan@Muruga:~/Desktop/dum/embedUrAssessment1$ ps -ef
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 06:22 ?        00:00:06 /usr/lib/systemd/systemd --s
+root           2       0  0 06:22 ?        00:00:00 [kthreadd]
+root           3       2  0 06:22 ?        00:00:00 [pool_workqueue_release]
+root           4       2  0 06:22 ?        00:00:00 [kworker/R-rcu_gp]
+root           5       2  0 06:22 ?        00:00:00 [kworker/R-sync_wq]
+root           6       2  0 06:22 ?        00:00:00 [kworker/R-kvfree_rcu_reclai
+root           7       2  0 06:22 ?        00:00:00 [kworker/R-slub_flushwq]
+root           8       2  0 06:22 ?        00:00:00 [kworker/R-netns]
+root          10       2  0 06:22 ?        00:00:00 [kworker/0:0H-events_highpri
+root          13       2  0 06:22 ?        00:00:00 [kworker/R-mm_percpu_wq]
+root          14       2  0 06:22 ?        00:00:00 [rcu_tasks_kthread]
+root          15       2  0 06:22 ?        00:00:00 [rcu_tasks_rude_kthread]
+root          16       2  0 06:22 ?        00:00:00 [rcu_tasks_trace_kthread]
+root          17       2  0 06:22 ?        00:01:23 [ksoftirqd/0]
+root          18       2  0 06:22 ?        00:00:34 [rcu_preempt]
+root          19       2  0 06:22 ?        00:00:00 [rcu_exp_par_gp_kthread_work
+root          20       2  0 06:22 ?        00:00:00 [rcu_exp_gp_kthread_worker]
+root          21       2  0 06:22 ?        00:00:00 [migration/0]
+root          22       2  0 06:22 ?        00:00:00 [idle_inject/0]
+root          23       2  0 06:22 ?        00:00:00 [cpuhp/0]
+root          24       2  0 06:22 ?        00:00:00 [cpuhp/1]
+root          25       2  0 06:22 ?        00:00:00 [idle_inject/1]
+root          26       2  0 06:22 ?        00:00:00 [migration/1]
+root          27       2  0 06:22 ?        00:00:06 [ksoftirqd/1]
+root          29       2  0 06:22 ?        00:00:00 [kworker/1:0H-events_highpri
+root          30       2  0 06:22 ?        00:00:00 [cpuhp/2]
+root          31       2  0 06:22 ?        00:00:00 [idle_inject/2]
+root          32       2  0 06:22 ?        00:00:00 [migration/2]
+root          33       2  0 06:22 ?        00:00:03 [ksoftirqd/2]
+root          35       2  0 06:22 ?        00:00:00 [kworker/2:0H-events_highpri
+root          36       2  0 06:22 ?        00:00:00 [cpuhp/3]
+root          37       2  0 06:22 ?        00:00:00 [idle_inject/3]
+root          38       2  0 06:22 ?        00:00:00 [migration/3]
+root          39       2  0 06:22 ?        00:00:05 [ksoftirqd/3]
+root          41       2  0 06:22 ?        00:00:00 [kworker/3:0H-events_highpri
+root          42       2  0 06:22 ?        00:00:00 [kdevtmpfs]
+root          43       2  0 06:22 ?        00:00:00 [kworker/R-inet_frag_wq]
+root          44       2  0 06:22 ?        00:00:00 [kauditd]
+root          45       2  0 06:22 ?        00:00:00 [khungtaskd]
+root          46       2  0 06:22 ?        00:00:00 [oom_reaper]
+root          49       2  0 06:22 ?        00:00:00 [kworker/R-writeback]
+root          50       2  0 06:22 ?        00:00:00 [kcompactd0]
+root          51       2  0 06:22 ?        00:00:00 [ksmd]
+root          52       2  0 06:22 ?        00:00:00 [khugepaged]
+root          53       2  0 06:22 ?        00:00:00 [kworker/R-kintegrityd]
+root          54       2  0 06:22 ?        00:00:00 [kworker/R-kblockd]
+root          55       2  0 06:22 ?        00:00:00 [kworker/R-blkcg_punt_bio]
+root          57       2  0 06:22 ?        00:00:44 [irq/9-acpi]
+root          60       2  0 06:22 ?        00:00:00 [kworker/R-tpm_dev_wq]
+root          61       2  0 06:22 ?        00:00:00 [kworker/R-ata_sff]
+root          62       2  0 06:22 ?        00:00:00 [kworker/R-md]
+root          63       2  0 06:22 ?        00:00:00 [kworker/R-md_bitmap]
+root          64       2  0 06:22 ?        00:00:00 [kworker/R-edac-poller]
+root          65       2  0 06:22 ?        00:00:00 [kworker/R-devfreq_wq]
+root          67       2  0 06:22 ?        00:00:00 [watchdogd]
+root          68       2  0 06:22 ?        00:00:03 [kworker/3:1H-i915_cleanup]
+root          69       2  0 06:22 ?        00:00:00 [kswapd0]
+root          70       2  0 06:22 ?        00:00:00 [ecryptfs-kthread]
+root          71       2  0 06:22 ?        00:00:00 [kworker/R-kthrotld]
+root          72       2  0 06:22 ?        00:00:00 [irq/121-aerdrv]
+root          73       2  0 06:22 ?        00:00:00 [irq/121-pcie-dpc]
+root          74       2  0 06:22 ?        00:00:00 [irq/122-aerdrv]
+root          75       2  0 06:22 ?        00:00:00 [irq/122-pcie-dpc]
+root          76       2  0 06:22 ?        00:00:00 [kworker/R-acpi_thermal_pm]
+root          78       2  0 06:22 ?        00:00:00 [hwrng]
+root          79       2  0 06:22 ?        00:00:00 [kworker/R-mld]
+root          80       2  0 06:22 ?        00:00:00 [kworker/R-ipv6_addrconf]
+root          88       2  0 06:22 ?        00:00:00 [kworker/R-kstrp]
+root          95       2  0 06:22 ?        00:00:00 [kworker/R-cryptd]
+root         104       2  0 06:22 ?        00:00:00 [kworker/R-charger_manager]
+root         105       2  0 06:22 ?        00:00:03 [kworker/0:1H-i915_cleanup]
+root         130       2  0 06:22 ?        00:00:03 [kworker/2:1H-i915_cleanup]
+root         159       2  0 06:22 ?        00:00:05 [kworker/1:1H-i915_cleanup]
+root         168       2  0 06:22 ?        00:00:00 [kworker/R-nvme-wq]
+root         170       2  0 06:22 ?        00:00:00 [scsi_eh_0]
+root         171       2  0 06:22 ?        00:00:00 [kworker/R-scsi_tmf_0]
+root         173       2  0 06:22 ?        00:00:00 [scsi_eh_1]
+root         174       2  0 06:22 ?        00:00:00 [kworker/R-scsi_tmf_1]
+root         175       2  0 06:22 ?        00:00:00 [kworker/R-nvme-reset-wq]
+root         179       2  0 06:22 ?        00:00:00 [kworker/R-nvme-delete-wq]
+root         180       2  0 06:22 ?        00:00:00 [kworker/R-nvme-auth-wq]
+root         189       2  0 06:23 ?        00:00:00 [kworker/R-uas]
+root         190       2  0 06:23 ?        00:00:00 [scsi_eh_2]
+root         191       2  0 06:23 ?        00:00:00 [kworker/R-scsi_tmf_2]
+root         193       2  0 06:23 ?        00:00:00 [usb-storage]
+root         220       2  0 06:23 ?        00:00:00 [kworker/R-raid5wq]
+root         267       2  0 06:23 ?        00:00:02 [jbd2/nvme0n1p2-8]
+root         268       2  0 06:23 ?        00:00:00 [kworker/R-ext4-rsv-conversi
+root         331       1  0 06:23 ?        00:00:02 /usr/lib/systemd/systemd-jou
+root         402       1  0 06:23 ?        00:00:03 /usr/lib/systemd/systemd-ude
+root         421       2  0 06:23 ?        00:00:00 [psimon]
+systemd+     612       1  0 06:23 ?        00:00:07 /usr/lib/systemd/systemd-oom
+systemd+     621       1  0 06:23 ?        00:00:05 /usr/lib/systemd/systemd-res
+systemd+     627       1  0 06:23 ?        00:00:00 /usr/lib/systemd/systemd-tim
+root         713       2  0 06:23 ?        00:00:00 [kworker/R-cfg80211]
+root         749       2  0 06:23 ?        00:00:33 [irq/136-iwlwifi:default_que
+root         750       2  0 06:23 ?        00:00:22 [irq/137-iwlwifi:queue_1]
+root         751       2  0 06:23 ?        00:00:22 [irq/138-iwlwifi:queue_2]
+root         752       2  0 06:23 ?        00:00:18 [irq/139-iwlwifi:queue_3]
+root         753       2  0 06:23 ?        00:00:35 [irq/140-iwlwifi:queue_4]
+root         754       2  0 06:23 ?        00:00:00 [irq/141-iwlwifi:exception]
+avahi        818       1  1 06:23 ?        00:06:20 avahi-daemon: running [Murug
+root         820       1  0 06:23 ?        00:00:00 /usr/libexec/bluetooth/bluet
+message+     821       1  0 06:23 ?        00:00:18 @dbus-daemon --system --addr
+gnome-r+     824       1  0 06:23 ?        00:00:00 /usr/libexec/gnome-remote-de
+root         827       1  0 06:23 ?        00:00:01 /usr/sbin/irqbalance
+polkitd      831       1  0 06:23 ?        00:00:05 /usr/lib/polkit-1/polkitd --
+root         833       1  0 06:23 ?        00:00:00 /usr/libexec/power-profiles-
+root         838       1  0 06:23 ?        00:00:03 /usr/lib/snapd/snapd
+root         839       1  0 06:23 ?        00:00:00 /usr/libexec/accounts-daemon
+root         844       1  0 06:23 ?        00:00:00 /usr/sbin/cron -f -P
+root         867       1  0 06:23 ?        00:00:00 /usr/libexec/switcheroo-cont
+root         869       1  0 06:23 ?        00:00:01 /usr/lib/systemd/systemd-log
+root         870       1  0 06:23 ?        00:01:40 /usr/sbin/thermald --systemd
+root         873       1  0 06:23 ?        00:00:13 /usr/bin/touchegg --daemon
+root         885       1  0 06:23 ?        00:00:01 /usr/libexec/udisks2/udisksd
+syslog       896       1  0 06:23 ?        00:00:00 /usr/sbin/rsyslogd -n -iNONE
+avahi        923     818  0 06:23 ?        00:00:00 avahi-daemon: chroot helper
+root         951       1  0 06:23 ?        00:00:45 /usr/sbin/NetworkManager --n
+root         955       1  0 06:23 ?        00:00:02 /usr/sbin/wpa_supplicant -u 
+root         966       1  0 06:23 ?        00:00:09 /usr/libexec/upowerd
+root        1003       2  0 06:23 ?        00:00:00 [kworker/R-ttm]
+root        1019       2  0 06:23 ?        00:00:00 [card1-crtc0]
+root        1021       2  0 06:23 ?        00:00:00 [card1-crtc1]
+root        1022       2  0 06:23 ?        00:00:00 [card1-crtc2]
+root        1080       1  0 06:23 ?        00:00:00 /usr/sbin/ModemManager
+root        1367       1  0 06:23 ?        00:00:00 /usr/sbin/cupsd -l
+colord      1382       1  0 06:23 ?        00:00:00 /usr/libexec/colord
+root        1385       1  0 06:23 ?        00:00:00 /usr/sbin/gdm3
+rtkit       1442       1  0 06:23 ?        00:00:00 /usr/libexec/rtkit-daemon
+root        1490       2  0 06:23 ?        00:00:00 [krfcommd]
+cups-br+    1839       1  0 06:23 ?        00:00:02 /usr/sbin/cups-browsed
+kernoops    1842       1  0 06:23 ?        00:00:00 /usr/sbin/kerneloops --test
+kernoops    1853       1  0 06:23 ?        00:00:00 /usr/sbin/kerneloops
+root        2218    1385  0 07:00 ?        00:00:00 gdm-session-worker [pam/gdm-
+aswinmu+    2232       1  0 07:00 ?        00:00:02 /usr/lib/systemd/systemd --u
+aswinmu+    2240    2232  0 07:00 ?        00:00:00 (sd-pam)
+aswinmu+    2253    2232  0 07:00 ?        00:00:12 /usr/bin/pipewire
+aswinmu+    2255    2232  0 07:00 ?        00:00:00 /usr/bin/pipewire -c filter-
+aswinmu+    2256    2232  0 07:00 ?        00:00:00 /usr/bin/wireplumber
+aswinmu+    2258    2232  0 07:00 ?        00:00:14 /usr/bin/pipewire-pulse
+aswinmu+    2262    2232  0 07:00 ?        00:00:05 /usr/bin/dbus-daemon --sessi
+aswinmu+    2266    2232  0 07:00 ?        00:00:00 /usr/bin/gnome-keyring-daemo
+aswinmu+    2302    2218  0 07:00 tty2     00:00:00 /usr/libexec/gdm-wayland-ses
+aswinmu+    2310    2302  0 07:00 tty2     00:00:00 /usr/libexec/gnome-session-b
+aswinmu+    2374    2232  0 07:00 ?        00:00:00 /usr/libexec/gcr-ssh-agent -
+aswinmu+    2375    2232  0 07:00 ?        00:00:00 /usr/libexec/gnome-session-c
+aswinmu+    2389    2232  0 07:00 ?        00:00:00 /usr/libexec/gvfsd
+aswinmu+    2397    2232  0 07:00 ?        00:00:00 /usr/libexec/gvfsd-fuse /run
+aswinmu+    2400    2232  0 07:00 ?        00:00:01 /usr/libexec/gnome-session-b
+aswinmu+    2428    2232  0 07:00 ?        00:00:00 /usr/libexec/xdg-permission-
+aswinmu+    2432    2232 16 07:00 ?        00:45:28 /usr/bin/gnome-shell
+aswinmu+    2435    2400  0 07:00 ?        00:00:00 /usr/libexec/at-spi-bus-laun
+aswinmu+    2449    2435  0 07:00 ?        00:00:00 /usr/bin/dbus-daemon --confi
+aswinmu+    2515    2232  0 07:00 ?        00:00:00 /usr/libexec/at-spi2-registr
+aswinmu+    2531    2232  0 07:00 ?        00:00:00 /usr/libexec/gnome-shell-cal
+aswinmu+    2538    2232  0 07:00 ?        00:00:00 /usr/libexec/evolution-sourc
+aswinmu+    2552    2232  0 07:00 ?        00:00:00 /usr/bin/gjs -m /usr/share/g
+aswinmu+    2560    2232  0 07:00 ?        00:01:16 /usr/bin/ibus-daemon --panel
+aswinmu+    2561    2232  0 07:00 ?        00:00:00 /usr/libexec/gsd-a11y-settin
+aswinmu+    2563    2232  0 07:00 ?        00:00:00 /usr/libexec/gsd-color
+aswinmu+    2569    2232  0 07:00 ?        00:00:00 /usr/libexec/gsd-datetime
+aswinmu+    2572    2232  0 07:00 ?        00:00:01 /usr/libexec/gsd-housekeepin
+aswinmu+    2575    2232  0 07:00 ?        00:00:00 /usr/libexec/gsd-keyboard
+aswinmu+    2576    2232  0 07:00 ?        00:00:01 /usr/libexec/gsd-media-keys
+aswinmu+    2577    2232  0 07:00 ?        00:00:01 /usr/libexec/gsd-power
+aswinmu+    2578    2232  0 07:00 ?        00:00:00 /usr/libexec/gsd-print-notif
+aswinmu+    2579    2232  0 07:00 ?        00:00:00 /usr/libexec/gsd-rfkill
+aswinmu+    2582    2232  0 07:00 ?        00:00:00 /usr/libexec/gsd-screensaver
+aswinmu+    2583    2232  0 07:00 ?        00:00:04 /usr/libexec/gsd-sharing
+aswinmu+    2585    2232  0 07:00 ?        00:00:00 /usr/libexec/gsd-smartcard
+aswinmu+    2589    2232  0 07:00 ?        00:00:00 /usr/libexec/gsd-sound
+aswinmu+    2592    2232  0 07:00 ?        00:00:00 /usr/libexec/gsd-wacom
+aswinmu+    2614    2400  0 07:00 ?        00:00:00 /usr/bin/python3 /usr/bin/bl
+aswinmu+    2623    2400  0 07:00 ?        00:00:00 /usr/libexec/gsd-disk-utilit
+aswinmu+    2632    2232  0 07:00 ?        00:00:00 /usr/libexec/goa-daemon
+aswinmu+    2643    2400  0 07:00 ?        00:00:00 /usr/libexec/evolution-data-
+aswinmu+    2679    2400  0 07:00 ?        00:00:00 /usr/bin/touchegg
+aswinmu+    2781    2232  0 07:00 ?        00:00:00 /usr/libexec/goa-identity-se
+aswinmu+    2794    2232  0 07:00 ?        00:00:00 /usr/libexec/gsd-printer
+aswinmu+    2801    2560  0 07:00 ?        00:00:00 /usr/libexec/ibus-memconf
+aswinmu+    2803    2560  0 07:00 ?        00:00:13 /usr/libexec/ibus-extension-
+aswinmu+    2807    2232  0 07:00 ?        00:00:00 /usr/libexec/ibus-portal
+aswinmu+    2814    2232  0 07:00 ?        00:00:00 /usr/libexec/gvfs-udisks2-vo
+aswinmu+    2838    2232  0 07:00 ?        00:00:00 /usr/libexec/evolution-calen
+aswinmu+    2853    2232  0 07:00 ?        00:00:00 /usr/libexec/gvfs-gphoto2-vo
+aswinmu+    2864    2232  0 07:00 ?        00:00:00 /usr/libexec/evolution-addre
+aswinmu+    2867    2232  0 07:00 ?        00:00:00 /usr/libexec/gvfs-afc-volume
+aswinmu+    2876    2232  0 07:00 ?        00:00:00 /usr/libexec/gvfs-goa-volume
+aswinmu+    2884    2232  0 07:00 ?        00:00:00 /usr/libexec/gvfs-mtp-volume
+aswinmu+    2891    2432  0 07:00 ?        00:00:02 /usr/bin/Xwayland :0 -rootle
+aswinmu+    2907    2560  0 07:00 ?        00:00:25 /usr/libexec/ibus-engine-sim
+aswinmu+    2948    2389  0 07:00 ?        00:00:00 /usr/libexec/gvfsd-trash --s
+aswinmu+    2961    2232  0 07:00 ?        00:00:00 /usr/libexec/dconf-service
+aswinmu+    2988    2232  0 07:00 ?        00:00:01 /usr/libexec/tracker-miner-f
+aswinmu+    2996    2232  0 07:00 ?        00:00:00 /usr/bin/gjs -m /usr/share/g
+aswinmu+    3008    2232  0 07:00 ?        00:00:00 /usr/libexec/gsd-xsettings
+aswinmu+    3018    2232  0 07:00 ?        00:00:00 /usr/libexec/gvfsd-metadata
+aswinmu+    3024    2232  0 07:00 ?        00:00:00 /usr/libexec/bluetooth/obexd
+aswinmu+    3026    2232  0 07:00 ?        00:00:15 /usr/bin/python3 /usr/bin/bl
+aswinmu+    3064    2232  0 07:00 ?        00:00:00 /usr/libexec/ibus-x11
+aswinmu+    3069    2432  0 07:00 ?        00:00:00 /usr/libexec/mutter-x11-fram
+aswinmu+    3164    2232  0 07:00 ?        00:00:01 /usr/libexec/xdg-desktop-por
+aswinmu+    3170    2232  0 07:00 ?        00:00:00 /usr/libexec/xdg-document-po
+root        3179    3170  0 07:00 ?        00:00:00 fusermount3 -o rw,nosuid,nod
+aswinmu+    3188    2232  0 07:00 ?        00:00:01 /usr/libexec/xdg-desktop-por
+aswinmu+    3202    2232  0 07:00 ?        00:00:00 /usr/libexec/xdg-desktop-por
+aswinmu+    3365    2232  0 07:01 ?        00:02:00 mintreport-tray
+aswinmu+    3721    2400  0 07:01 ?        00:00:00 /usr/bin/update-notifier
+aswinmu+    3784    2232  0 07:01 ?        00:00:25 mintUpdate
+root        4173       1  0 07:14 ?        00:00:02 /usr/libexec/fwupd/fwupd
+aswinmu+    5013    2232  0 07:19 ?        00:00:00 /usr/bin/gnome-calendar --ga
+aswinmu+    5169    2232  0 07:19 ?        00:00:18 /usr/libexec/gnome-terminal-
+aswinmu+    5176    5169  0 07:19 pts/4    00:00:00 bash
+root       12810       2  0 07:21 ?        00:00:00 [kworker/R-xfsalloc]
+root       12811       2  0 07:21 ?        00:00:00 [kworker/R-xfs_mru_cache]
+root       12814       2  0 07:21 ?        00:00:00 [jfsIO]
+root       12815       2  0 07:21 ?        00:00:00 [jfsCommit]
+root       12816       2  0 07:21 ?        00:00:00 [jfsCommit]
+root       12817       2  0 07:21 ?        00:00:00 [jfsCommit]
+root       12818       2  0 07:21 ?        00:00:00 [jfsCommit]
+root       12819       2  0 07:21 ?        00:00:00 [jfsSync]
+aswinmu+   13194    2432  6 07:21 ?        00:15:49 /opt/google/chrome/chrome
+aswinmu+   13201   13194  0 07:21 ?        00:00:00 cat
+aswinmu+   13202   13194  0 07:21 ?        00:00:00 cat
+aswinmu+   13204    2232  0 07:21 ?        00:00:00 /opt/google/chrome/chrome_cr
+aswinmu+   13206    2232  0 07:21 ?        00:00:00 /opt/google/chrome/chrome_cr
+aswinmu+   13212   13194  0 07:21 ?        00:00:00 /opt/google/chrome/chrome --
+aswinmu+   13213   13194  0 07:21 ?        00:00:00 /opt/google/chrome/chrome --
+aswinmu+   13215   13213  0 07:21 ?        00:00:01 /opt/google/chrome/chrome --
+aswinmu+   13248   13212  6 07:21 ?        00:15:53 /opt/google/chrome/chrome --
+aswinmu+   13250   13194  1 07:21 ?        00:03:40 /opt/google/chrome/chrome --
+aswinmu+   13261   13215  0 07:21 ?        00:00:04 /opt/google/chrome/chrome --
+aswinmu+   23815   13194  0 07:35 ?        00:00:19 /opt/google/chrome/chrome --
+aswinmu+   24529   13215  0 07:48 ?        00:01:10 /opt/google/chrome/chrome --
+aswinmu+   24835   13215  5 07:50 ?        00:12:48 /opt/google/chrome/chrome --
+root       25220       2  0 09:10 ?        00:00:00 [irq/130-mei_me]
+aswinmu+   25654    2389  0 09:11 ?        00:00:00 /usr/libexec/gvfsd-http --sp
+lp         25748    1367  0 09:11 ?        00:00:00 /usr/lib/cups/notifier/dbus 
+aswinmu+   27304   13215  0 09:37 ?        00:00:40 /opt/google/chrome/chrome --
+aswinmu+   27384   13215  0 09:37 ?        00:00:01 /opt/google/chrome/chrome --
+aswinmu+   27396   13215  8 09:37 ?        00:10:11 /opt/google/chrome/chrome --
+aswinmu+   27504    2432  0 09:39 ?        00:00:14 /usr/bin/gnome-control-cente
+aswinmu+   27551    2389  0 09:39 ?        00:00:00 /usr/libexec/gvfsd-network -
+aswinmu+   27560    2389  0 09:39 ?        00:00:00 /usr/libexec/gvfsd-dnssd --s
+root       27727       2  0 09:39 ?        00:00:00 [psimon]
+aswinmu+   28296   13215  0 09:41 ?        00:00:01 /opt/google/chrome/chrome --
+aswinmu+   28468    2232  0 09:43 ?        00:00:03 /usr/bin/nautilus --gapplica
+aswinmu+   28495    2389  0 09:43 ?        00:00:00 /usr/libexec/gvfsd-recent --
+aswinmu+   28849   13215  0 09:48 ?        00:00:07 /opt/google/chrome/chrome --
+root       29070       2  0 09:52 ?        00:00:02 [kworker/u16:3-ext4-rsv-conv
+aswinmu+   30611   13215  0 10:31 ?        00:00:03 /opt/google/chrome/chrome --
+aswinmu+   30875   13215  0 10:40 ?        00:00:33 /opt/google/chrome/chrome --
+aswinmu+   31190    2432  0 10:53 ?        00:00:03 gjs /usr/share/gnome-shell/e
+root       31542       2  0 10:55 ?        00:00:01 [kworker/u16:1-events_power_
+aswinmu+   31676   13215  2 10:58 ?        00:01:10 /opt/google/chrome/chrome --
+aswinmu+   31716   13215  0 10:58 ?        00:00:03 /opt/google/chrome/chrome --
+root       32091       2  0 11:05 ?        00:00:01 [kworker/u16:0-events_power_
+aswinmu+   32113   13215  0 11:05 ?        00:00:01 /opt/google/chrome/chrome --
+aswinmu+   32263    2432  8 11:09 ?        00:02:48 /usr/lib/firefox/firefox
+aswinmu+   32270    2232  0 11:09 ?        00:00:00 /usr/lib/firefox/crashhelper
+aswinmu+   32347   32263  0 11:09 ?        00:00:00 /usr/lib/firefox/firefox-bin
+aswinmu+   32354   32347  0 11:09 ?        00:00:00 /usr/lib/firefox/firefox-bin
+aswinmu+   32367   32347  1 11:09 ?        00:00:30 /usr/lib/firefox/firefox-bin
+aswinmu+   32377   32347  0 11:09 ?        00:00:00 /usr/lib/firefox/firefox-bin
+aswinmu+   32407   32347  0 11:09 ?        00:00:16 /usr/lib/firefox/firefox-bin
+aswinmu+   32467   32347  0 11:09 ?        00:00:03 /usr/lib/firefox/firefox-bin
+aswinmu+   32526   32347  0 11:09 ?        00:00:00 /usr/lib/firefox/firefox-bin
+aswinmu+   32534   32347  1 11:09 ?        00:00:37 /usr/lib/firefox/firefox-bin
+root       32704       2  0 11:09 ?        00:00:00 [kworker/1:1-events]
+aswinmu+   32765   32347  0 11:10 ?        00:00:00 /usr/lib/firefox/firefox-bin
+aswinmu+   32811   32347  0 11:10 ?        00:00:01 /usr/lib/firefox/firefox-bin
+root       32863       2  0 11:11 ?        00:00:00 [kworker/3:1-events]
+aswinmu+   32910   32347  0 11:11 ?        00:00:00 /usr/lib/firefox/firefox-bin
+aswinmu+   33059    2232  0 11:12 ?        00:00:10 /usr/bin/evince /home/aswinm
+aswinmu+   33067    2232  0 11:12 ?        00:00:00 /usr/libexec/evinced
+aswinmu+   33197   13215  0 11:14 ?        00:00:01 /opt/google/chrome/chrome --
+aswinmu+   33294   13215  3 11:14 ?        00:00:52 /opt/google/chrome/chrome --
+aswinmu+   33338   13215  1 11:14 ?        00:00:20 /opt/google/chrome/chrome --
+root       33396       2  0 11:14 ?        00:00:00 [kworker/u16:4-events_unboun
+aswinmu+   33452   13215  0 11:14 ?        00:00:00 /opt/google/chrome/chrome --
+aswinmu+   33467   13215  0 11:15 ?        00:00:02 /opt/google/chrome/chrome --
+aswinmu+   33526   13215  0 11:15 ?        00:00:03 /opt/google/chrome/chrome --
+aswinmu+   33536   13215  1 11:15 ?        00:00:17 /opt/google/chrome/chrome --
+root       33567       2  0 11:15 ?        00:00:05 [kworker/u17:3-rb_allocator]
+aswinmu+   33581   13215  9 11:16 ?        00:02:20 /opt/google/chrome/chrome --
+root       33807       2  0 11:18 ?        00:00:00 [kworker/0:2-i915-unordered]
+aswinmu+   33862    2232  0 11:20 ?        00:00:00 /usr/lib/libreoffice/program
+aswinmu+   33882   33862  0 11:20 ?        00:00:09 /usr/lib/libreoffice/program
+root       34155       2  0 11:24 ?        00:00:00 [kworker/2:0-mld]
+root       34282       2  0 11:28 ?        00:00:00 [kworker/1:3-events]
+root       34422       2  0 11:30 ?        00:00:06 [kworker/0:0-i915-unordered]
+aswinmu+   34459   13215  0 11:30 ?        00:00:03 /opt/google/chrome/chrome --
+root       34469       2  0 11:30 ?        00:00:04 [kworker/u17:2-rb_allocator]
+aswinmu+   34477   13215  0 11:30 ?        00:00:02 /opt/google/chrome/chrome --
+aswinmu+   34567   13215  0 11:32 ?        00:00:00 /opt/google/chrome/chrome --
+root       34666       2  0 11:33 ?        00:00:00 [kworker/3:2-events]
+aswinmu+   34696   13215 12 11:34 ?        00:00:58 /opt/google/chrome/chrome --
+root       34813       2  0 11:36 ?        00:00:00 [kworker/2:1-mm_percpu_wq]
+aswinmu+   34863   13215  0 11:38 ?        00:00:00 /opt/google/chrome/chrome --
+root       34924       2  0 11:39 ?        00:00:00 [kworker/u16:2-events_unboun
+root       34925       2  0 11:39 ?        00:00:00 [kworker/3:0-events]
+root       34987       2  0 11:40 ?        00:00:00 [kworker/u17:0+i915_flip]
+aswinmu+   35017    5176 99 11:41 pts/4    00:00:00 ps -ef
+
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment1$ cd dir1
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment1/dir1$ ls
+dir2  f1  f2  f3  file_link
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment1/dir1$ cd ..
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment1$ ls
+dir1  file1  file2  sorted_files.txt
+
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment1$ cat sorted_files.txt
+total 32
+-rw-rw-r-- 1 aswinmurugan aswinmurugan    0 Feb 10 14:31 f1
+-rw-rw-r-- 1 aswinmurugan aswinmurugan    0 Feb 10 14:31 f2
+-rw-rw-r-- 1 aswinmurugan aswinmurugan    0 Feb 10 14:31 f3
+lrwxrwxrwx 1 aswinmurugan aswinmurugan   14 Feb 10 12:25 file_link -> dir1/dir2/file
+drwxrwxr-x 2 aswinmurugan aswinmurugan 4096 Feb 10 11:40 dir2
+
+aswinmurugan@Muruga:~/Desktop/dum/embedUrAssessment1$ ls -l -a
+total 32
+drwxrwxr-x 4 aswinmurugan aswinmurugan 4096 Feb 10 11:40 .
+drwxrwxr-x 3 aswinmurugan aswinmurugan 4096 Feb 10 11:03 ..
+drwxrwxr-x 3 aswinmurugan aswinmurugan 4096 Feb 10 11:40 dir1
+-rwxrwxr-x 1 aswinmurugan aswinmurugan    0 Feb 10 11:22 file1
+-rw-r--r-- 1 aswinmurugan aswinmurugan    0 Feb 10 11:22 file2
+drwxrwxr-x 7 aswinmurugan aswinmurugan 4096 Feb 10 11:03 .git
+aswinmurugan@Muruga:~/Desktop/dum/linux$ cd Assessment1
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment1$ mkdir dir1
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment1$ touch dir1/f1 dir1/f2 dir1/f3
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment1$ ls -lt dir1 > sorted_files.txt
+
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment1$ cd dir1
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment1/dir1$ ls
+dir2  f1  f2  f3  file_link
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment1/dir1$ cd ..
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment1$ ls
+dir1  file1  file2  sorted_files.txt
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment1$ cat sorted_files.txt
+total 32
+-rw-rw-r-- 1 aswinmurugan aswinmurugan    0 Feb 10 14:31 f1
+-rw-rw-r-- 1 aswinmurugan aswinmurugan    0 Feb 10 14:31 f2
+-rw-rw-r-- 1 aswinmurugan aswinmurugan    0 Feb 10 14:31 f3
+lrwxrwxrwx 1 aswinmurugan aswinmurugan   14 Feb 10 12:25 file_link -> dir1/dir2/file
+drwxrwxr-x 2 aswinmurugan aswinmurugan 4096 Feb 10 11:40 dir2
+
+
+
+
+
+                                               
+
+
+-----------------------------------------------------------------Module-2----------------------------------------------------------------------
+1) Use the appropriate command to list all files larger than 1 MB in the current directory and save the output to a file.
+aswinmurugan@Muruga:~$ cd ./Desktop/dum/linux
+aswinmurugan@Muruga:~/Desktop/dum/linux$ find . -maxdepth 1 -type f -size +1M > large_files.txt
+aswinmurugan@Muruga:~/Desktop/dum/linux$ cat large_files.txt
+aswinmurugan@Muruga:~/Desktop/dum/linux$ find . -maxdepth 2 -type f -size +1M > large_files.txt
+aswinmurugan@Muruga:~/Desktop/dum/linux$ find . -maxdepth 2 -type f -size +1M > large_files.txt
+aswinmurugan@Muruga:~/Desktop/dum/linux$ cat large_files.txt
+./Assssment2/pdfcoffee.com_mastering-the-chess-openings-volume-3-pdf-free.pdf
+
+2) Replace all occurrences of "localhost" with "127.0.0.1" in a configuration file named config.txt, and save the updated file as updated_config.txt.
+aswinmurugan@Muruga:~/Desktop/dum/linux$ echo "server=localhost" > config.txt
+echo "db_host=localhost" >> config.txt
+aswinmurugan@Muruga:~/Desktop/dum/linux$ cat config.txt
+server=localhost
+db_host=localhost
+aswinmurugan@Muruga:~/Desktop/dum/linux$ echo "server=localhost" 
+server=localhost
+aswinmurugan@Muruga:~/Desktop/dum/linux$ sed 's/localhost/127.0.0.1/g' config.txt > updated_config.txt
+aswinmurugan@Muruga:~/Desktop/dum/linux$ cat updated_config.tx
+cat: updated_config.tx: No such file or directory
+aswinmurugan@Muruga:~/Desktop/dum/linux$ cat updated_config.txt
+server=127.0.0.1
+db_host=127.0.0.1
+3) Use the appropriate command to search for lines containing the word "ERROR" in a log file but exclude lines containing "DEBUG". Save the results to a file named filtered_log.txt.
+ log:
+DEBUG: Starting the application initialization.
+ERROR: Unable to connect to the database.
+INFO: User 'admin' logged in successfully.
+DEBUG: Fetching configuration settings from the server.
+ERROR: DEBUG - Configuration settings could not be applied.
+INFO: Scheduled job 'backup' completed successfully.
+DEBUG: Connection to server timed out. Retrying...
+ERROR: Failed to fetch data from API endpoint '/users'.
+INFO: Maintenance mode activated.
+ERROR: DEBUG - Query execution failed due to a syntax error.
+DEBUG: Reloading application modules.
+ERROR: Missing required parameter in the request.
+INFO: Shutting down the system gracefully.
+DEBUG: Closing unused network connections.
+ERROR: DEBUG - Unexpected server response received.
+
+
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment2$ grep "ERROR" log.txt | grep -v "DEBUG" >> filtered_log.txt
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment2$ cat filtered_log.txt
+ERROR: Unable to connect to the database. 
+ERROR: Failed to fetch data from API endpoint '/users'. 
+ERROR: Missing required parameter in the request. 
+
+
+4) Write a code to identify the process with the highest memory usage and then terminate it.
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment2$ ps -eo pid,%mem --sort=-%mem | head -n 2
+    PID %MEM
+  32263  3.5
+5) Use the networking tool command and print all the gateway available in a sorted manner
+aswinmurugan@Muruga:~/Desktop/dum/linux/Assessment2$ ip route | grep default | awk '{print $3}' | sort
+192.168.10.1
+aswinmurugan@Muruga:~/Des
+
